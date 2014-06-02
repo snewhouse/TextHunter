@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ML-CONFIG>
+  <VERBOSITY level="NONE"/>
+  <SURROUND value="false"/>
+  <IS-LABEL-UPDATABLE value="true"/>
+  <IS-NLPFEATURELIST-UPDATABLE value="true"/>
+  <PARAMETER name="thresholdProbabilityEntity" value="0.0"/>
+  <PARAMETER name="thresholdProbabilityBoundary" value="0.0"/>
+  <PARAMETER name="thresholdProbabilityClassification" value="0.0"/>
+  <multiClassification2Binary method="one-vs-others"/>
+
+  <EVALUATION method="kfold" runs="10"/>
+  <FILTERING dis="near" ratio="0.0"/>
+  <ENGINE implementationName="SVMLibSvmJava" nickname="SVM" options=" -c 1.0 -t 1 -d 2 -m 100 -tau 1.0  "/>
+  <!--best results with no stemming, ngrams or stop word removal. Doesn't make much difference tho!-->
+  <!--<ENGINE nickname="SVM" implementationName="SVMLibSvmJava"  
+        options=" -c 0.8 -t 0  -m 100 -tau 0.6  "/>-->		
+
+  <DATASET>
+    <INSTANCE-TYPE>Context</INSTANCE-TYPE>
+    <NGRAM>
+      <NAME>Word</NAME>
+      <NUMBER>1</NUMBER>
+      <CONSNUM>2</CONSNUM>
+      <CONS-1>
+	<TYPE>Word</TYPE>
+	<FEATURE>root</FEATURE>
+      </CONS-1>
+      <CONS-2>
+	<TYPE>Word</TYPE>
+	<FEATURE>category</FEATURE>
+      </CONS-2> 	  
+    </NGRAM>
+
+	
+
+    <NGRAM>
+      <NAME>TargetKeyword</NAME>
+      <NUMBER>1</NUMBER>
+      <CONSNUM>6</CONSNUM>
+      <CONS-1>
+	<TYPE>TargetKeyword</TYPE>
+	<FEATURE>name</FEATURE>
+      </CONS-1>
+      <CONS-2>
+	<TYPE>TargetKeyword</TYPE>
+	<FEATURE>Directionality</FEATURE>
+      </CONS-2>	  
+      <CONS-3>
+	<TYPE>TargetKeyword</TYPE>
+	<FEATURE>Temporality</FEATURE>
+      </CONS-3>	
+		<CONS-4>
+	<TYPE>TargetKeyword</TYPE>
+	<FEATURE>Experiencer</FEATURE>
+      </CONS-4>	
+		<CONS-5>
+	<TYPE>TargetKeyword</TYPE>
+	<FEATURE>otherRoot</FEATURE>
+      </CONS-5>		  
+		<CONS-6>
+	<TYPE>TargetKeyword</TYPE>
+	<FEATURE>prox</FEATURE>
+      </CONS-6>		  
+    </NGRAM>		
+	
+    <!--NGRAM>
+      <NAME>Bigram</NAME>
+      <NUMBER>1</NUMBER>
+      <CONSNUM>1</CONSNUM>
+      <CONS-1>
+	<TYPE>Bigram</TYPE>
+	<FEATURE>n_gramString</FEATURE>
+      </CONS-1>
+    </NGRAM-->		
+	
+    <!--NGRAM>
+      <NAME>Bigram</NAME>
+      <NUMBER>1</NUMBER>
+      <CONSNUM>1</CONSNUM>
+      <CONS-1>
+	<TYPE>Bigram</TYPE>
+	<FEATURE>n_gramRoot</FEATURE>
+      </CONS-1>
+    </NGRAM-->
+
+    <!--NGRAM>
+      <NAME>Trigram</NAME>
+      <NUMBER>1</NUMBER>
+      <CONSNUM>1</CONSNUM>
+      <CONS-1>
+	<TYPE>Trigram</TYPE>
+	<FEATURE>n_gramRoot</FEATURE>
+      </CONS-1>
+    </NGRAM-->
+
+    <!--NGRAM>
+      <NAME>Quadgram</NAME>
+      <NUMBER>1</NUMBER>
+      <CONSNUM>1</CONSNUM>
+      <CONS-1>
+	<TYPE>Quadgram</TYPE>
+	<FEATURE>n_gramRoot</FEATURE>
+      </CONS-1>
+    </NGRAM-->
+    
+    <ATTRIBUTE>
+      <NAME>Class</NAME>
+      <SEMTYPE>NOMINAL</SEMTYPE>
+      <TYPE>Context</TYPE>
+      <FEATURE>observation</FEATURE>
+      <POSITION>0</POSITION>
+      <CLASS/>
+    </ATTRIBUTE>
+  </DATASET>
+
+</ML-CONFIG>

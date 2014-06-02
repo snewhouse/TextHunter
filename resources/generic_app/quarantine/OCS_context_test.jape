@@ -1,0 +1,18 @@
+/*
+*  just cahnge the pattern to to annotation you want, (also the name in the second jape gammaer!) and the feature in the groovy script!
+* 
+*/
+
+Phase:	three_sent_gram
+Input: Sentence TargetKeyword
+Options: control = Appelt
+
+
+
+Rule: target_sentence
+(
+
+{Sentence contains TargetKeyword}
+):match
+-->
+:match.Context = {rule = "target_sentence"}

@@ -1,0 +1,197 @@
+Imports: { import static gate.Utils.*; }
+Phase:	three_sent_gram
+Input: Sentence TargetKeyword
+Options: control = All
+
+
+
+Rule: target_sentence_1
+
+(
+({Sentence contains TargetKeyword}):littleMatch
+):bigMatch
+-->
+:bigMatch{
+	  AnnotationSet words = inputAS.get("Sentence").getContained(start(bigMatchAnnots), end(bigMatchAnnots));
+	  //AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	  long numWords = 0;	
+	  for(Annotation t : words) {
+		  numWords++;
+	  }
+		FeatureMap fm = Factory.newFeatureMap();	  
+		fm.put("numWords",numWords);
+		fm.put("priority",1);		
+		Annotation lm = gate.Utils.getOnlyAnn(bindings.get("littleMatch"));
+		fm.put("targetKeywordID",start(lm));		
+		outputAS.add(bigMatchAnnots.firstNode(), bigMatchAnnots.lastNode(), "Context",  fm); 		
+
+}
+
+Rule: target_sentence_2
+
+(
+({Sentence})
+({Sentence contains TargetKeyword}):littleMatch
+):bigMatch
+-->
+:bigMatch{
+	  AnnotationSet words = inputAS.get("Sentence").getContained(start(bigMatchAnnots), end(bigMatchAnnots));
+	  //AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	  long numWords = 0;	
+	  for(Annotation t : words) {
+		  numWords++;
+	  }
+		FeatureMap fm = Factory.newFeatureMap();	  
+		fm.put("numWords",numWords);
+		fm.put("priority",2);			
+		Annotation lm = gate.Utils.getOnlyAnn(bindings.get("littleMatch"));
+		fm.put("targetKeywordID",start(lm));		
+		outputAS.add(bigMatchAnnots.firstNode(), bigMatchAnnots.lastNode(), "Context",  fm); 		
+
+}
+
+Rule: target_sentence_3
+
+(
+({Sentence contains TargetKeyword}):littleMatch
+({Sentence})
+):bigMatch
+-->
+:bigMatch{
+	  AnnotationSet words = inputAS.get("Sentence").getContained(start(bigMatchAnnots), end(bigMatchAnnots));
+	  //AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	  long numWords = 0;	
+	  for(Annotation t : words) {
+		  numWords++;
+	  }
+		FeatureMap fm = Factory.newFeatureMap();	  
+		fm.put("numWords",numWords);
+		fm.put("priority",3);			
+		Annotation lm = gate.Utils.getOnlyAnn(bindings.get("littleMatch"));
+		fm.put("targetKeywordID",start(lm));		
+		outputAS.add(bigMatchAnnots.firstNode(), bigMatchAnnots.lastNode(), "Context",  fm); 		
+
+}
+
+Rule: target_sentence_4
+
+(
+({Sentence})
+({Sentence contains TargetKeyword}):littleMatch
+({Sentence})
+):bigMatch
+-->
+:bigMatch{
+	  AnnotationSet words = inputAS.get("Sentence").getContained(start(bigMatchAnnots), end(bigMatchAnnots));
+	  //AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	  long numWords = 0;	
+	  for(Annotation t : words) {
+		  numWords++;
+	  }
+		FeatureMap fm = Factory.newFeatureMap();	  
+		fm.put("numWords",numWords);
+		fm.put("priority",4);		
+		Annotation lm = gate.Utils.getOnlyAnn(bindings.get("littleMatch"));
+		fm.put("targetKeywordID",start(lm));	
+		outputAS.add(bigMatchAnnots.firstNode(), bigMatchAnnots.lastNode(), "Context",  fm); 		
+
+}
+
+Rule: target_sentence_5
+
+(
+({Sentence})
+({Sentence})
+({Sentence contains TargetKeyword}):littleMatch
+({Sentence})
+):bigMatch
+-->
+:bigMatch{
+	  AnnotationSet words = inputAS.get("Sentence").getContained(start(bigMatchAnnots), end(bigMatchAnnots));
+	  //AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	  long numWords = 0;	
+	  for(Annotation t : words) {
+		  numWords++;
+	  }
+		FeatureMap fm = Factory.newFeatureMap();	  
+		fm.put("numWords",numWords);
+		fm.put("priority",5);			
+		Annotation lm = gate.Utils.getOnlyAnn(bindings.get("littleMatch"));
+		fm.put("targetKeywordID",start(lm));	
+		outputAS.add(bigMatchAnnots.firstNode(), bigMatchAnnots.lastNode(), "Context",  fm); 		
+
+}
+
+Rule: target_sentence_6
+
+(
+({Sentence})
+({Sentence})
+({Sentence contains TargetKeyword}):littleMatch
+({Sentence})
+({Sentence})
+):bigMatch
+-->
+:bigMatch{
+	  AnnotationSet words = inputAS.get("Sentence").getContained(start(bigMatchAnnots), end(bigMatchAnnots));
+	  //AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	  long numWords = 0;	
+	  for(Annotation t : words) {
+		  numWords++;
+	  }
+		FeatureMap fm = Factory.newFeatureMap();	  
+		fm.put("numWords",numWords);
+		fm.put("priority",6);			
+		Annotation lm = gate.Utils.getOnlyAnn(bindings.get("littleMatch"));
+		fm.put("targetKeywordID",start(lm));	
+		outputAS.add(bigMatchAnnots.firstNode(), bigMatchAnnots.lastNode(), "Context",  fm); 		
+
+}
+
+Rule: target_sentence_7
+
+(
+({Sentence contains TargetKeyword}):littleMatch
+({Sentence})
+({Sentence})
+):bigMatch
+-->
+:bigMatch{
+	  AnnotationSet words = inputAS.get("Sentence").getContained(start(bigMatchAnnots), end(bigMatchAnnots));
+	  //AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	  long numWords = 0;	
+	  for(Annotation t : words) {
+		  numWords++;
+	  }
+		FeatureMap fm = Factory.newFeatureMap();	  
+		fm.put("numWords",numWords);
+		fm.put("priority",7);		
+		Annotation lm = gate.Utils.getOnlyAnn(bindings.get("littleMatch"));
+		fm.put("targetKeywordID",start(lm));	
+		outputAS.add(bigMatchAnnots.firstNode(), bigMatchAnnots.lastNode(), "Context",  fm); 		
+
+}
+
+Rule: target_sentence_8
+
+(
+({Sentence})
+({Sentence})
+({Sentence contains TargetKeyword}):littleMatch
+):bigMatch
+-->
+:bigMatch{
+	  AnnotationSet words = inputAS.get("Sentence").getContained(start(bigMatchAnnots), end(bigMatchAnnots));
+	  //AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	  long numWords = 0;	
+	  for(Annotation t : words) {
+		  numWords++;
+	  }
+		FeatureMap fm = Factory.newFeatureMap();	  
+		fm.put("numWords",numWords);
+		fm.put("priority",8);		
+		Annotation lm = gate.Utils.getOnlyAnn(bindings.get("littleMatch"));
+		fm.put("targetKeywordID",start(lm));	
+		outputAS.add(bigMatchAnnots.firstNode(), bigMatchAnnots.lastNode(), "Context",  fm); 		
+
+}

@@ -1,0 +1,9 @@
+CaTIES_lists/CaTIES_MinorHeadings.lst:heading:minor
+CaTIES_lists/CaTIES_Attestation.lst:signature:
+CaTIES_lists/CaTIES_Abbreviations.lst:abbreviation:
+CaTIES_lists/CaTIES_NegExPreNegationPhrases.lst:negation:pre
+CaTIES_lists/CaTIES_NegExPostNegationPhrases.lst:negation:post
+CaTIES_lists/CaTIES_NegExPseudoNegationPhrases.lst:pseudo_negation:
+CaTIES_lists/CaTIES_NegExStopWords.lst:stopword:negex
+CaTIES_lists/CaTIES_IrrelevantTerms.lst:stopword:irrelevant
+CaTIES_lists/CaTIES_StopWords.lst:stopword:common

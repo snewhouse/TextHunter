@@ -1,0 +1,22 @@
+Imports: { import static gate.Utils.*; }
+Phase:	three_sent_gram
+Input: Sentence TargetKeyword
+Options: control = All
+
+
+
+Rule: target_sentence_1
+
+(
+{Sentence contains TargetKeyword}
+):bigMatch
+-->
+:bigMatch{
+	AnnotationSet bigmatchAS = bindings.get("bigMatch");
+	Annotation sentence = gate.Utils.getOnlyAnn(bigmatchAS);
+	AnnotationSet targets = gate.Utils.getContainedAnnotations(inputAS,sentence, "TargetKeyword");
+	for(Annotation t : targets) {
+		FeatureMap fm = t.getFeatures();
+		fm.put("targetKeywordID",start(sentence));
+	}	
+}

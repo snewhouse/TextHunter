@@ -1,0 +1,51 @@
+    Text Hunter: User friendly concept extraction from text
+
+    Copyright (C) 2014  Richard Jackson (richgjackson@yahoo.co.uk)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http:www.gnu.org/licenses/>.
+	
+
+The following libraries used by TextHunter are licensed as follows
+
+jtds-1.3.1.jar	
+http://www.gnu.org/copyleft/lesser.html	
+http://jtds.sourceforge.net/license.html
+
+
+guava-15.0.jar	
+http://www.apache.org/licenses/LICENSE-2.0	
+http://code.google.com/p/guava-libraries/wiki/Release15
+
+derbynet.jar	
+http://www.apache.org/licenses/LICENSE-2.0	
+http://db.apache.org/derby/
+
+derbyclient.jar	
+http://www.apache.org/licenses/LICENSE-2.0	
+http://db.apache.org/derby/
+
+derby.jar	
+http://www.apache.org/licenses/LICENSE-2.0	
+http://db.apache.org/derby/
+
+AbsoluteLayout.jar	
+http://www.apache.org/licenses/LICENSE-2.0	
+www.netbeans.com
+
+GATE.jar	
+http://www.gnu.org/licenses/lgpl-3.0.html	
+https://gate.ac.uk
+
+In addition, full licence details for the libraries in use by GATE can be found in the index.html file in this directory.
+

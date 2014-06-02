@@ -1,0 +1,14 @@
+Phase: quick_jape
+Input: Token
+Options: control = Appelt
+
+
+Rule: target_keyword
+(
+
+{Token.string =~"[aA][kc][ia][ts][ht][ieh][sie][is][ai]"}
+
+):match
+-->
+:match.Lookup = {cleanKeyword = :match@cleanString , TargetKeyword = "yes", rule = "target_keyword"}
+

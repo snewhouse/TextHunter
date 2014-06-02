@@ -1,0 +1,105 @@
+// Content: Contextual Feature Tagger used for evaluation described in
+//          "ConText Portability" paper
+// Date: 10/13/9
+// Note: removed dependency on caBIG/caTIES code
+
+Phase: ForSomeTime
+Input: Token Lookup
+Options: control=appelt
+
+Macro: NUM ({Token.kind == number} ({Token.string == "."} {Token.kind == number})?)
+
+Macro: WMY
+(
+({Token.string == "week"}) | ({Token.string == "weeks"}) |
+({Token.string == "month"}) | ({Token.string == "months"}) |
+({Token.string == "year"}) | ({Token.string == "years"})
+)
+
+//depending on what you define as "recent" vs "historical"
+Rule: RemovePseudoHistoryTrigger
+(
+(({Token.string == "one-week"}) ({Lookup.majorType=="Trigger",Lookup.minorType=="History"}):trigger) |
+(({Token.string == "day"}) ({Lookup.majorType=="Trigger",Lookup.minorType=="History"}):trigger2)
+):scope
+-->
+{
+	AnnotationSet trigger = (AnnotationSet) bindings.get("trigger");
+	AnnotationSet trigger2 = (AnnotationSet) bindings.get("trigger2");
+	if(trigger!=null)	outputAS.removeAll(trigger);
+	if(trigger2!=null)	outputAS.removeAll(trigger2);
+}
+
+
+Rule: TagForSomeTime
+(
+{Lookup.majorType=="Trigger", Lookup.minorType == "History_fovertheplast"}
+( NUM | (({Token}) ({Token})? ({Token})? ({Token})? ({Token})? ({Token})? ({Token})?))?:lengthoftime
+(WMY):unitoftime
+):scope
+-->
+{
+	AnnotationSet scopeAnnot = (AnnotationSet) bindings.get("scope");
+	AnnotationSet lengthAnnot = (AnnotationSet) bindings.get("lengthoftime");
+	AnnotationSet unitAnnot = (AnnotationSet) bindings.get("unitoftime");
+	if(lengthAnnot != null){
+		Long startLength = lengthAnnot.firstNode().getOffset();
+		Long endLength = lengthAnnot.lastNode().getOffset();
+		Long startUnit = unitAnnot.firstNode().getOffset();
+		Long endUnit = unitAnnot.lastNode().getOffset();
+		try {	
+			String lengthoftime = doc.getContent().getContent(startLength, endLength).toString();
+			String unitoftime = doc.getContent().getContent(startUnit, endUnit).toString();
+
+			FeatureMap f = Factory.newFeatureMap();
+			f.put("Length of Time", lengthoftime);
+			f.put("Unit of Time", unitoftime);
+			outputAS.add(scopeAnnot.firstNode(), scopeAnnot.lastNode(), "ForSomeTime", f);
+
+		} catch (InvalidOffsetException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+//"For several days" is a history terminator
+Rule: HistoryTerminator
+(
+(({Lookup.majorType=="Trigger", Lookup.minorType == "History_fovertheplast"}) |
+({Token.string  == "within"} {Token.string == "the"} {Token.string == "last"}) |
+({Token.string  == "in"} {Token.string == "the"} {Token.string == "last"}))
+
+( NUM | (({Token}) ({Token})? ({Token})? ({Token})? ({Token})? ({Token})? ({Token})?))?:lengthoftime
+(({Token.string == "day"}) | ({Token.string == "days"})):day
+):scope
+-->
+{
+	AnnotationSet scopeAnnot = (AnnotationSet) bindings.get("scope");
+	FeatureMap f = Factory.newFeatureMap();
+	f.put("majorType", "Terminator");
+	f.put("minorType","for several days");
+	outputAS.add(	scopeAnnot.firstNode(),
+			scopeAnnot.lastNode(),
+			"Lookup",
+			f);
+}
+
+//"For sudden onset of" is a history terminator
+Rule: HistoryTerminator2
+(
+{Token.string  == "sudden"} {Token.string == "onset"} {Token.string == "of"}
+):scope
+-->
+{
+	AnnotationSet scopeAnnot = (AnnotationSet) bindings.get("scope");
+	FeatureMap f = Factory.newFeatureMap();
+	f.put("majorType", "Terminator");
+	f.put("minorType","sudden onset of");
+	outputAS.add(	scopeAnnot.firstNode(),
+			scopeAnnot.lastNode(),
+			"Lookup",
+			f);
+}
+
+

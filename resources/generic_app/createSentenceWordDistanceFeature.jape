@@ -1,0 +1,34 @@
+/*
+*  just cahnge the pattern to to annotation you want, (also the name in the second jape gammaer!) and the feature in the groovy script!
+* 
+*/
+
+Phase:	createWordDistance
+Input: Sentence OCSKeyword
+Options: control = Appelt
+
+
+
+Rule: target_sentence
+(
+({Sentence}):match1
+({Sentence contains OCSKeyword}):match2
+)
+-->
+:match1 {
+		AnnotationSet oneSentWordsAS = gate.Utils.getContainedAnnotations(inputAS,match1Annots,"Word");
+		Iterator<Annotation> wordIter = oneSentWordsAS.iterator();
+		while(wordIter.hasNext()){
+			Annotation word = wordIter.next();
+			word.getFeatures().put("sentenceDist","1");
+		}
+},
+:match2 {
+		AnnotationSet zeroSentWordsAS = gate.Utils.getContainedAnnotations(inputAS,match2Annots,"Word");
+		Iterator<Annotation> wordIter = zeroSentWordsAS.iterator();
+		while(wordIter.hasNext()){
+			Annotation word = wordIter.next();
+			word.getFeatures().put("sentenceDist","0");
+		}	
+}
+	

@@ -1,0 +1,23 @@
+Phase: CopyLookups
+Input:Lookup TargetKeyword
+Options: control=all
+
+
+
+
+Rule: StopKeyword
+Priority: 5
+(
+	{Lookup.majorType == StopKeyword}
+):match
+-->
+:match.StopKeyword = { name = :match@cleanString, rule = StopKeyword}
+
+
+Rule: TargetKeywordtoCoreConcept
+Priority: 50
+(
+	{TargetKeyword}
+):match
+-->
+:match.CoreConcept = {}

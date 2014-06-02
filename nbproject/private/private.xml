@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="19">
+        <file>
+            <url>src/TextHunter/AnnotationEditor.java</url>
+            <bookmark id="14">
+                <name/>
+                <line>808</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/uk/ac/kcl/texthunter/core/AnnotationEditor.java</url>
+            <bookmark id="19">
+                <name/>
+                <line>449</line>
+                <key/>
+            </bookmark>
+            <bookmark id="17">
+                <name/>
+                <line>1518</line>
+                <key/>
+            </bookmark>
+            <bookmark id="18">
+                <name/>
+                <line>1519</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/TextHunter/MLModelMaker.java</url>
+            <bookmark id="15">
+                <name/>
+                <line>504</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/database_console/MLModelMaker.java</url>
+            <bookmark id="9">
+                <name/>
+                <line>316</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/database_console/AnnotationEditor.java</url>
+            <bookmark id="11">
+                <name/>
+                <line>956</line>
+                <key/>
+            </bookmark>
+            <bookmark id="6">
+                <name/>
+                <line>1019</line>
+                <key/>
+            </bookmark>
+            <bookmark id="7">
+                <name/>
+                <line>1240</line>
+                <key/>
+            </bookmark>
+            <bookmark id="13">
+                <name/>
+                <line>1252</line>
+                <key/>
+            </bookmark>
+            <bookmark id="12">
+                <name/>
+                <line>2368</line>
+                <key/>
+            </bookmark>
+            <bookmark id="8">
+                <name/>
+                <line>2390</line>
+                <key/>
+            </bookmark>
+            <bookmark id="2">
+                <name/>
+                <line>2390</line>
+                <key/>
+            </bookmark>
+            <bookmark id="10">
+                <name/>
+                <line>2466</line>
+                <key/>
+            </bookmark>
+            <bookmark id="3">
+                <name/>
+                <line>2478</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/rich/Documents/NetBeansProjects/TextHunter/src/uk/ac/kcl/texthunter/core/MLModelMaker.java</file>
+            <file>file:/C:/Users/rich/Documents/NetBeansProjects/TextHunter/src/uk/ac/kcl/texthunter/utils/SQLCommands.java</file>
+            <file>file:/C:/Users/rich/Documents/NetBeansProjects/TextHunter/src/uk/ac/kcl/texthunter/core/AnnotationEditor.java</file>
+        </group>
+    </open-files>
+</project-private>

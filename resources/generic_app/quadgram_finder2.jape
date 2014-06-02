@@ -1,0 +1,83 @@
+/*
+*  ngram_analyser.jape
+*
+*/
+Imports: { import static gate.Utils.*; }
+Phase:	Quadgram_finder
+Input: Word Split
+Options: control = all
+
+Rule: Quadgram_finder
+(
+{Word}
+{Word}
+{Word}
+{Word}
+):sent
+-->
+:sent {
+	// get Tokens within each n_gram annotation (I think!)
+  AnnotationSet tokens = gate.Utils.getContainedAnnotations(inputAS,sentAnnots,"Word");
+	//get list of tokens in order they appear in the document
+  List<Annotation> tokenList = gate.Utils.inDocumentOrder(tokens);
+  Iterator<Annotation> ngramIter;
+  Annotation ngram;
+  
+	try{
+	
+		ngramIter = sentAnnots.iterator();
+		
+		// iterate through each n_gram annotation
+		while(ngramIter.hasNext()){
+		ngram = ngramIter.next();
+	
+			String n_gramRoot = "";
+			String n_gramString = "";
+			String three_gramRoot = "";
+			String three_gramString = "";
+			int numberOfTokens = tokenList.size();
+			int i = 1;		  
+		  
+
+			gate.FeatureMap fm = Factory.newFeatureMap();
+
+			//iterate through each token in the ngram
+			for(Annotation token : tokenList){
+				//concatenate the root from the morpho analyser
+				n_gramRoot = n_gramRoot + " " + token.getFeatures().get("root");
+				//concatenate the string from the string feature
+				n_gramString = n_gramString + " " + token.getFeatures().get("string");
+				i++;					
+			}
+			
+
+			//some clean up stuff
+			n_gramRoot		= gate.Utils.cleanString(n_gramRoot);
+			n_gramRoot 		= n_gramRoot.toLowerCase();
+			n_gramString	= gate.Utils.cleanString(n_gramString);
+			n_gramString 	= n_gramString.toLowerCase();
+			
+			
+			// add to the feature map
+			fm.put("n_gramRoot", n_gramRoot);	
+			fm.put("n_gramString", n_gramString);	
+	
+
+			//add to the annotation
+			outputAS.add(ngram.getStartNode().getOffset(), ngram.getEndNode().getOffset(), "Quadgram",fm);		
+			fm = null;
+			n_gramRoot = null;
+		}
+		
+		//not sure if this is necessary
+		ngramIter = null;
+		tokens = null;
+		ngram = null;
+
+	}				
+
+	catch(InvalidOffsetException ioe){
+            //this should never happen
+            throw new GateRuntimeException(ioe);
+    }
+}

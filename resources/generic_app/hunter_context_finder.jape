@@ -1,0 +1,18 @@
+Imports: { import static gate.Utils.*; }
+Phase:	three_sent_gram
+Input: Sentence TargetKeyword
+Options: control = all
+
+
+
+
+Rule: target_sentence_5
+
+(
+({Sentence})[0,2]
+({Sentence contains TargetKeyword})
+({Sentence})[0,2]
+
+):bigMatch
+-->
+:bigMatch.Context = {rule = "target_sentence_5" }
