@@ -2881,7 +2881,7 @@ public class AnnotationEditor extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("v0.1.3");
+        setTitle("v0.1.4");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         textHunterJTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
