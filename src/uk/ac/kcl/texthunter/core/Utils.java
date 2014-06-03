@@ -237,7 +237,8 @@ public class Utils {
             "src_col LONG VARCHAR ,\n" +
             "annotation_start INTEGER ,\n" +
             "annotation_end INTEGER ,\n" +
-            "KEYPRIORITY LONG VARCHAR,\n" +
+            "KEYPRIORITY1 LONG VARCHAR,\n" +
+            "KEYPRIORITY2 LONG VARCHAR,\n" +
             "MLPRIORITY LONG VARCHAR,\n" +                    
             "length_of_time LONG VARCHAR,\n" +
             "unit_of_time LONG VARCHAR,\n" +
