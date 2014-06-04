@@ -238,11 +238,7 @@ public class Utils {
             "annotation_start INTEGER ,\n" +
             "annotation_end INTEGER ,\n" +
             "KEYPRIORITY1 LONG VARCHAR,\n" +
-<<<<<<< HEAD
             "KEYPRIORITY2 LONG VARCHAR,\n" +                    
-=======
-            "KEYPRIORITY2 LONG VARCHAR,\n" +
->>>>>>> 24848552984cf2b430f81560804ab6da76c8f54f
             "MLPRIORITY LONG VARCHAR,\n" +                    
             "length_of_time LONG VARCHAR,\n" +
             "unit_of_time LONG VARCHAR,\n" +

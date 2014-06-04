@@ -49,7 +49,8 @@ public class SQLCommands {
         this.brcJoin = "  join " + targetTableName + "_DOCUMENTS t3 on t1.CN_DOC_ID= t3.CN_DOC_ID \n";
         switch (dbType) {
             case "sqlserver":
-                this.random = "NEWID()";                
+                this.random = "NEWID()";
+                this.brcJoin = "  join GateDB_Cris.dbo.gate t3 on t1.cn_doc_id = t3.CN_Doc_ID and t1.src_table = t3.src_table and t1.src_col = t3.src_col\n";
                 this.currentTimeAsString = "CONVERT(VARCHAR, CURRENT_TIMESTAMP, 13)";
                 this.topLimit1 = " TOP 5000";
                 this.topLimit2 = " TOP 50000";
@@ -58,7 +59,8 @@ public class SQLCommands {
                 this.nolock = "WITH (NOLOCK)";
                 break;
             case "derby":
-                this.random = "RANDOM()";                
+                this.random = "RANDOM()";
+                this.brcJoin = "  join " + targetTableName + "_DOCUMENTS t3 on t1.CN_DOC_ID= t3.CN_DOC_ID \n";
                 this.currentTimeAsString = "CAST (CURRENT_TIMESTAMP AS VARCHAR(100))";
                 this.topLimit1 = "";
                 this.topLimit2 = "";

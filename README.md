@@ -1,6 +1,6 @@
 Hello and welcome to TextHunter
 
-This is the first 'Official' release. Simply unzip and run 
+This is the first 'official' release (in the loosest possible sense). Simply unzip and run 
 
 texthunter.bat. Note, the program has primarily been developed 
 
